@@ -1,0 +1,31 @@
+{
+  "name": "web3_auth_module",
+  "version": "0.3.6",
+  "description": "",
+  "main": "dist/index.min.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp minify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alhaqhassan/web3_auth_module.git"
+  },
+  "author": "Ahmad Hassan Ansari",
+  "license": "MIT",
+  "dependencies": {
+    "@coinbase/wallet-sdk": "^3.5.3",
+    "@walletconnect/web3-provider": "^1.7.0",
+    "web3modal": "^1.9.9"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-rename": "^2.0.0"
+  }
+}
