@@ -11,7 +11,7 @@
   "dependencies": {
     "vue": "^2.6.12",
     "web3": "^1.6.0",
-    "web3_auth_module": "file:lib/web3_auth_module"
+    "web3_kit": " https://github.com/alhaqhassan/wallet-kit"
   },
   "devDependencies": {
     "@originjs/vite-plugin-commonjs": "^1.0.3",

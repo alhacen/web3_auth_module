@@ -12,68 +12,29 @@
             </div>
             <p class="text-sm">{{$wallet.address}}</p>
           </div>
-          <div class="flex flex-col gap-2">
-            <div class="flex justify-between">
-              <p class="text-xl font-bold">ChainId</p>
-              <p class="font-bold text-gray-700"></p>
-            </div>
+          <div class="flex flex-col gap-2 text-xl font-bold">
+            ChainId
             <p class="text-sm">{{$wallet.chainId}}</p>
           </div>
-          <!-- {{networks}} -->
-          <div class="flex flex-col gap-2">
-            <div class="flex justify-between">
-              <p class="text-xl font-bold">Available networks</p>
-              <p class="font-bold text-gray-700"></p>
-            </div>
-            <div class="flex gap-4">
-              <button 
-                v-for="network in $wallet.networks" 
-                :key="network.name"
-                @click="$wallet.ChangeNetwork(network)"
-                :disabled="network.chainId === $wallet.chainId"
-              >
-                {{network.name}}
-              </button>
-            </div>
-          </div>
-          
-
+          <AvailableNetworks />
           <div class="flex flex-col gap-2"></div>
         </div>
-        <button v-if="$wallet.address" @click="$wallet.DisconnectWallet">Disconnect Wallet</button>
-        <div class="flex flex-col gap-2" v-else>
-          <button 
-            v-for="wallet in $wallet.supportedWallets"
-            :key="wallet.name" 
-            @click="$wallet.ConnectWallet(wallet.id)"
-          >
-            Connect {{wallet.name}}
-          </button>
-        </div>
+        <Logout v-if="$wallet.address" />
+        <Login v-else/>
       </div>
-      <HelloWorld />
     </div>
 </template>
 <script>
-import HelloWorld from "./components/HelloWorld.vue"
+import Login from './components/login.vue'
+import Logout from './components/logout.vue'
+import AvailableNetworks from './components/available_networks.vue'
 export default {
     components:{
-      HelloWorld
+        Login,
+        Logout,
+        AvailableNetworks
     },
-    data:()=>({
-    }),
-    props:{
-        isActive: {
-            type: Boolean
-        }
-    },
-    mounted(){
-      
-    },
-    computed:{
-
-    },
-    
+       
 }
 </script>
 <style >
