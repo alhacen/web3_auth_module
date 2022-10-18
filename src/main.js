@@ -1,7 +1,7 @@
-import Vue from "vue";
+import Vue, { readonly, reactive } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import { authPlugin } from "web3_auth_module/src";
+import { authPlugin } from "web3_auth_module/dist/index.min.js";
 Vue.use(authPlugin, {
     networks: {
         mainnet: {
@@ -27,32 +27,18 @@ Vue.use(authPlugin, {
         },
     },
 });
+let x = {
+    name: "hassan",
+};
+setTimeout(() => {
+    x.name = 4;
+}, 1000);
 const plugin = {
     install(Vue, options) {
-        Vue.mixin({
-            data: () => ({
-                myName: "hqhqhq",
-            }),
-            computed: {
-                $sayMyName() {
-                    return this.myName;
-                },
-            },
-            beforeCreate: function () {
-                registerPlugin(this);
-            },
-        });
+        // Vue.prototype.$wallet = Object.freeze(reactive(x));
     },
 };
-function registerPlugin(vm) {
-    if (vm.$root.myName) {
-        Object.keys(vm.$options.computed).forEach((_) => {
-            console.log(vm.$options.computed, vm.$root.$options.computed);
-            vm.$options.computed = vm.$root.$options.computed;
-        });
-        // vm.$options.myName = vm.$root.myName;
-    }
-}
+
 Vue.use(plugin);
 new Vue({
     render: (h) => h(App),
