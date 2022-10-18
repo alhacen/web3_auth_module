@@ -1,7 +1,7 @@
 import Vue, { readonly, reactive } from "vue";
 import "./style.css";
 import App from "./App.vue";
-import { authPlugin } from "web3_auth_module/dist/index.min.js";
+import { authPlugin } from "web3_auth_module";
 Vue.use(authPlugin, {
     networks: {
         mainnet: {
